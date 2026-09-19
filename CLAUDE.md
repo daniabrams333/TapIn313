@@ -6,6 +6,8 @@ A mobile rewards app that gets Detroit students into after-school programs and s
 
 **Deadline:** working demo and public site by Monday, September 21, 2026 at 8:00 AM. Scope is locked. Do not add features that are not listed here.
 
+See PLAN.md for the hour-by-hour schedule and status checklist. Tick checkboxes in PLAN.md as tasks are finished.
+
 ## The problem we address
 The City is expanding access to after-school programming. Our job is participation: getting students through the door and giving them a clear path so programs stop feeling disjointed. We complement GOAL Line Detroit. We do not compete with it and we do not claim a partnership with it.
 
