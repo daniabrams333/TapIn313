@@ -1,9 +1,10 @@
 import SwiftUI
 
-/// Programs tab: the "Up next" card, a category filter, and the list of programs.
+/// Programs tab: a list (Up next card, category filter, programs) or a map of the same programs.
 struct ProgramsScreen: View {
     @Environment(AppStore.self) private var store
     @State private var selectedCategory: ProgramCategory?
+    @State private var showMap = false
 
     private var filteredPrograms: [Program] {
         guard let selectedCategory else { return store.programs }
@@ -12,48 +13,18 @@ struct ProgramsScreen: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                if let next = store.upNext(for: store.currentStudentID) {
-                    Section {
-                        NavigationLink(value: next.program) {
-                            UpNextCard(trackName: next.track.name, levelTitle: next.level.title, program: next.program)
-                        }
-                        .listRowBackground(Theme.primary)
-                    } header: {
-                        Text("Your next step starts here")
-                            .font(.headline)
-                            .foregroundStyle(.primary)
-                            .textCase(nil)
-                    }
+            Group {
+                if showMap {
+                    ProgramsMapView(
+                        programs: store.programs,
+                        upNextProgramID: store.upNext(for: store.currentStudentID)?.program.id
+                    )
+                } else {
+                    programList
                 }
-
-                Section {
-                    CategoryFilter(selected: $selectedCategory)
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
-
-                    if filteredPrograms.isEmpty {
-                        Text("No programs in this category yet.")
-                            .font(.body)
-                            .foregroundStyle(.secondary)
-                    }
-                    ForEach(filteredPrograms) { program in
-                        NavigationLink(value: program) {
-                            ProgramRow(program: program)
-                        }
-                    }
-                } header: {
-                    Text("All programs")
-                        .font(.headline)
-                        .foregroundStyle(.primary)
-                        .textCase(nil)
-                }
-
-                Section {
-                    Text("Site and activity names come from GOAL Line Detroit. Schedules and details are samples for this demo. Tap In 313 is an independent project and is not an official City of Detroit app.")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
+            }
+            .safeAreaInset(edge: .top, spacing: 0) {
+                ViewModeToggle(showMap: $showMap)
             }
             .navigationTitle("Programs")
             .navigationDestination(for: Program.self) { program in
@@ -61,9 +32,85 @@ struct ProgramsScreen: View {
             }
         }
     }
+
+    private var programList: some View {
+        List {
+            if let next = store.upNext(for: store.currentStudentID) {
+                Section {
+                    NavigationLink(value: next.program) {
+                        UpNextCard(trackName: next.track.name, levelTitle: next.level.title, program: next.program)
+                    }
+                    .listRowBackground(Theme.primary)
+                } header: {
+                    Text("Your next step starts here")
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                        .textCase(nil)
+                }
+            }
+
+            Section {
+                CategoryFilter(selected: $selectedCategory)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+
+                if filteredPrograms.isEmpty {
+                    Text("No programs in this category yet.")
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                }
+                ForEach(filteredPrograms) { program in
+                    NavigationLink(value: program) {
+                        ProgramRow(program: program)
+                    }
+                }
+            } header: {
+                Text("All programs")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                    .textCase(nil)
+            }
+
+            Section {
+                Text("Site and activity names come from GOAL Line Detroit. Schedules and details are samples for this demo. Tap In 313 is an independent project and is not an official City of Detroit app.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+    }
 }
 
 // MARK: - Pieces
+
+/// List and Map buttons. Built by hand so each one is a full 44 pt target.
+private struct ViewModeToggle: View {
+    @Binding var showMap: Bool
+
+    var body: some View {
+        HStack(spacing: 8) {
+            option(title: "List", symbol: "list.bullet", isOn: !showMap) { showMap = false }
+            option(title: "Map", symbol: "map.fill", isOn: showMap) { showMap = true }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .frame(maxWidth: .infinity)
+        .background(.bar)
+    }
+
+    private func option(title: String, symbol: String, isOn: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Label(title, systemImage: isOn ? "checkmark" : symbol)
+                .font(.subheadline.weight(.semibold))
+                .frame(maxWidth: .infinity, minHeight: 44)
+                .foregroundStyle(isOn ? Theme.onPrimary : Theme.primary)
+                .background(isOn ? Theme.primary : Color.clear, in: Capsule())
+                .overlay(Capsule().strokeBorder(Theme.primary, lineWidth: 1.5))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("\(title) view")
+        .accessibilityAddTraits(isOn ? .isSelected : [])
+    }
+}
 
 private struct UpNextCard: View {
     let trackName: String

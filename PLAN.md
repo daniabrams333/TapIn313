@@ -35,7 +35,7 @@ If Sunday noon arrives and the full loop is not working, drop map polish and the
 ### Saturday 3:00 to 8:00 PM: Core screens
 - [x] Program list with search or category filter, showing site, venue type, points, and a "Free ride from your school" tag
 - [x] Program detail: site, venue type, schedule, grades, address, points, join button
-- [ ] Programs map with pins for all 14 programs, tapping a pin opens the detail
+- [x] Programs map with pins for all 14 programs, tapping a pin opens the detail
 - [x] "Your next step starts here" card at the top of the Programs tab, driven by `store.upNext(for:)`
 - [x] Footer note on the Programs screen (sample data and independent project disclaimer)
 
