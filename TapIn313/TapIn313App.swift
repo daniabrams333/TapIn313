@@ -53,59 +53,6 @@ struct StudentTabs: View {
     }
 }
 
-struct PathScreen: View {
-    @Environment(AppStore.self) private var store
-
-    var body: some View {
-        NavigationStack {
-            List {
-                if let track = store.currentTrack(for: store.currentStudentID) {
-                    Section(track.name) {
-                        ForEach(Array(track.levels.enumerated()), id: \.offset) { index, level in
-                            let progress = store.levelProgress(track, levelIndex: index, studentID: store.currentStudentID)
-                            let done = store.isLevelComplete(track, levelIndex: index, studentID: store.currentStudentID)
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(level.title).font(.headline)
-                                Text(store.program(level.programID)?.name ?? "")
-                                    .font(.subheadline)
-                                Text(done
-                                     ? "Complete"
-                                     : "\(progress.done) of \(progress.required) sessions, +\(level.bonusPoints) bonus points")
-                                    .font(.footnote)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                        Text("At the end: \(track.payoff)")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                Section("Switch track") {
-                    ForEach(store.tracks) { track in
-                        Button(track.name) {
-                            store.chooseTrack(track.id, for: store.currentStudentID)
-                        }
-                    }
-                }
-            }
-            .navigationTitle("My path")
-        }
-    }
-}
-
-struct RewardsScreen: View {
-    @Environment(AppStore.self) private var store
-
-    var body: some View {
-        NavigationStack {
-            List(store.merchants) { merchant in
-                Text(merchant.name).font(.headline)
-            }
-            .navigationTitle("Rewards")
-        }
-    }
-}
-
 // MARK: - Celebration placeholder (replaced by the real unlock moment)
 
 struct UnlockPlaceholder: View {
@@ -154,19 +101,3 @@ extension Array {
     }
 }
 
-// MARK: - Staff mode (placeholder)
-
-struct StaffHomeView: View {
-    @Environment(AppStore.self) private var store
-
-    var body: some View {
-        NavigationStack {
-            List {
-                Text("Staff mode: pick a program, then confirm attendance.")
-                    .font(.body)
-                Button("Back to student mode") { store.mode = .student }
-            }
-            .navigationTitle("Staff")
-        }
-    }
-}

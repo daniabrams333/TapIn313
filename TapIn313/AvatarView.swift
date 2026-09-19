@@ -3,17 +3,23 @@ import SwiftUI
 /// A student's pixel-art avatar: a person with a hairstyle, skin tone, and shirt picked from
 /// `Student.colorIndex`. No photos: students are minors, so avatars are drawn characters only.
 struct AvatarView: View {
-    let student: Student
+    let displayName: String
+    let colorIndex: Int
     @ScaledMetric private var side: CGFloat
 
     init(student: Student, size: CGFloat = 96) {
-        self.student = student
+        self.init(displayName: student.displayName, colorIndex: student.colorIndex, size: size)
+    }
+
+    init(displayName: String, colorIndex: Int, size: CGFloat = 96) {
+        self.displayName = displayName
+        self.colorIndex = colorIndex
         _side = ScaledMetric(wrappedValue: size, relativeTo: .title)
     }
 
     var body: some View {
-        let look = Theme.avatarLook(student.colorIndex)
-        let art = PixelArt.avatars[student.colorIndex % PixelArt.avatars.count]
+        let look = Theme.avatarLook(colorIndex)
+        let art = PixelArt.avatars[colorIndex % PixelArt.avatars.count]
 
         ZStack {
             look.backdrop
@@ -25,6 +31,6 @@ struct AvatarView: View {
         .frame(width: side, height: side)
         .clipShape(RoundedRectangle(cornerRadius: side * 0.14))
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(student.displayName) avatar")
+        .accessibilityLabel("\(displayName) avatar")
     }
 }

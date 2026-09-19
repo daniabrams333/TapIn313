@@ -7,24 +7,13 @@ struct TrackPathView: View {
     @Environment(AppStore.self) private var store
     let track: Track
     let student: Student
+    var showsTitle = true
 
-    fileprivate enum NodeState {
-        case complete, current, locked
+    private var states: [LevelState] {
+        LevelState.states(for: track, studentID: student.id, in: store)
     }
 
-    private var states: [NodeState] {
-        var foundCurrent = false
-        return track.levels.indices.map { index in
-            if store.isLevelComplete(track, levelIndex: index, studentID: student.id) { return .complete }
-            if !foundCurrent {
-                foundCurrent = true
-                return .current
-            }
-            return .locked
-        }
-    }
-
-    private func statusText(index: Int, state: NodeState) -> String {
+    private func statusText(index: Int, state: LevelState) -> String {
         switch state {
         case .complete:
             return "Done"
@@ -41,8 +30,10 @@ struct TrackPathView: View {
         let isTrackComplete = store.isTrackComplete(track, studentID: student.id)
 
         VStack(alignment: .leading, spacing: 12) {
-            Label("\(track.name) path", systemImage: track.symbol)
-                .font(.subheadline.weight(.semibold))
+            if showsTitle {
+                Label("\(track.name) path", systemImage: track.symbol)
+                    .font(.subheadline.weight(.semibold))
+            }
 
             HStack(alignment: .top, spacing: 0) {
                 ForEach(track.levels.indices, id: \.self) { index in
@@ -68,7 +59,7 @@ struct TrackPathView: View {
         .accessibilityLabel(accessibilitySummary(states: states, isTrackComplete: isTrackComplete))
     }
 
-    private func accessibilitySummary(states: [NodeState], isTrackComplete: Bool) -> String {
+    private func accessibilitySummary(states: [LevelState], isTrackComplete: Bool) -> String {
         let steps = track.levels.indices.map { index -> String in
             let level = track.levels[index]
             let program = store.program(level.programID)?.name ?? ""
@@ -79,6 +70,23 @@ struct TrackPathView: View {
     }
 }
 
+/// Where a level stands for one student. The first unfinished level is the current one.
+enum LevelState {
+    case complete, current, locked
+
+    static func states(for track: Track, studentID: String, in store: AppStore) -> [LevelState] {
+        var foundCurrent = false
+        return track.levels.indices.map { index in
+            if store.isLevelComplete(track, levelIndex: index, studentID: studentID) { return .complete }
+            if !foundCurrent {
+                foundCurrent = true
+                return .current
+            }
+            return .locked
+        }
+    }
+}
+
 // MARK: - Pieces
 
 private struct PathNode: View {
@@ -86,7 +94,7 @@ private struct PathNode: View {
     let title: String
     let programName: String
     let status: String
-    let state: TrackPathView.NodeState
+    let state: LevelState
     /// nil means no line on that side. true means the line is finished, false means still ahead.
     let lineBefore: Bool?
     let lineAfter: Bool?

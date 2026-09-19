@@ -16,6 +16,9 @@ struct ProfileScreen: View {
                 demoControlsSection
             }
             .navigationTitle("Profile")
+            .navigationDestination(for: Redemption.self) { redemption in
+                GiftCardScreen(redemption: redemption)
+            }
         }
     }
 
@@ -95,7 +98,14 @@ struct ProfileScreen: View {
                     .foregroundStyle(.secondary)
             }
             ForEach(history) { item in
-                HistoryRow(item: item)
+                if case .redeemed(let redemption, _, _) = item.kind {
+                    // Tap a redemption to see its gift card code again.
+                    NavigationLink(value: redemption) {
+                        HistoryRow(item: item)
+                    }
+                } else {
+                    HistoryRow(item: item)
+                }
             }
         } header: {
             Text("Activity")
@@ -131,7 +141,16 @@ struct ProfileScreen: View {
                     )
                 )
             }
-        return (checkIns + levels).sorted { $0.date > $1.date }
+        let redemptions = store.redemptions(for: studentID).map { redemption in
+            let reward = store.reward(redemption.rewardID)
+            let merchantName = reward.flatMap { store.merchant($0.merchantID)?.name } ?? "Local merchant"
+            return HistoryItem(
+                id: redemption.id,
+                date: redemption.date,
+                kind: .redeemed(redemption, title: reward?.title ?? "Reward", merchantName: merchantName)
+            )
+        }
+        return (checkIns + levels + redemptions).sorted { $0.date > $1.date }
     }
 
     // MARK: Demo controls
@@ -194,6 +213,7 @@ private struct HistoryItem: Identifiable {
     enum Kind {
         case checkIn(programName: String, points: Int)
         case levelComplete(trackName: String, levelTitle: String, bonus: Int)
+        case redeemed(Redemption, title: String, merchantName: String)
     }
 
     let id: UUID
@@ -230,10 +250,19 @@ private struct HistoryRow: View {
                 points: bonus,
                 accessibility: "Level complete: \(levelTitle), \(trackName), on \(dayText). Bonus \(bonus) points."
             )
+        case .redeemed(let redemption, let title, let merchantName):
+            row(
+                symbol: "gift.fill",
+                title: "Redeemed: \(title)",
+                subtitle: merchantName,
+                points: redemption.cost,
+                sign: "−",
+                accessibility: "Redeemed \(title) at \(merchantName) on \(dayText). Spent \(redemption.cost) points. Opens the gift card."
+            )
         }
     }
 
-    private func row(symbol: String, title: String, subtitle: String, points: Int, accessibility: String) -> some View {
+    private func row(symbol: String, title: String, subtitle: String, points: Int, sign: String = "+", accessibility: String) -> some View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: symbol)
                 .font(.title3)
@@ -249,7 +278,7 @@ private struct HistoryRow: View {
                     .foregroundStyle(.secondary)
             }
             Spacer(minLength: 8)
-            PointsPill(points: points)
+            PointsPill(points: points, sign: sign)
         }
         .padding(.vertical, 4)
         .frame(minHeight: 44)

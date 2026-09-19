@@ -11,6 +11,10 @@ import Foundation
 /// Addresses and coordinates came from a map lookup. Spot-check before presenting.
 enum MockData {
 
+    // MARK: Staff (fictional)
+
+    static let staffMember = StaffMember(displayName: "Sam R.", role: "Program staff", colorIndex: 3)
+
     // MARK: Students (fictional, first name and last initial only)
 
     static let students: [Student] = [

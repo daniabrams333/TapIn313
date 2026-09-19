@@ -159,6 +159,15 @@ struct Badge: Identifiable, Hashable {
     let rule: BadgeRule
 }
 
+// MARK: - Staff
+
+/// The person using staff mode. Fictional, and named like the students: first name and last initial.
+struct StaffMember: Hashable {
+    let displayName: String
+    let role: String
+    let colorIndex: Int         // picks an avatar look
+}
+
 // MARK: - Students and activity
 
 struct Student: Identifiable, Hashable {

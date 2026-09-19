@@ -22,6 +22,7 @@ final class AppStore {
     let rewards = MockData.rewards
     let badges = MockData.badges
     let students = MockData.students
+    let staffMember = MockData.staffMember
 
     var studentTracks: [String: String] = [:]    // studentID -> trackID
     var enrollments: [String: [String]] = [:]    // programID -> studentIDs

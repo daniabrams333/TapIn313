@@ -41,19 +41,21 @@ If Sunday noon arrives and the full loop is not working, drop map polish and the
 
 ### Saturday 8:00 to 11:00 PM: Profile and My Path
 - [x] Profile screen: avatar (`Theme.avatarStyle`), points balance, badges grid, activity history with "Checked in by staff at [time]"
-- [ ] My Path tab: track picker cards ("What sounds like you?"), level progress ("1 of 2 sessions"), what unlocks next, track payoff
-- [ ] Switching tracks keeps earned progress and bonuses
+- [x] My Path tab: track picker cards ("What sounds like you?"), level progress ("1 of 2 sessions"), what unlocks next, track payoff
+- [x] Switching tracks keeps earned progress and bonuses
 
 ### Saturday 11:00 PM to Sunday 7:00 AM: Sleep
 No work planned.
 
 ### Sunday 7:00 AM to 12:00 PM: Rewards and staff mode
-- [ ] Rewards catalog grouped by local merchant with point costs and a locked state when the balance is too low
-- [ ] Redeem flow: confirm, deduct points, show the digital gift card code (`TAP-XXXX-XXXX`)
-- [ ] Redemption history on the profile
-- [ ] Staff mode: pick a program, see the roster, tap a student to confirm attendance, show a confirmation
-- [ ] Staff mode uses `Theme.staff` (City Green) so it is clearly different from student mode
-- [ ] Demo controls: switch between student and staff, and reset the demo (`store.resetDemo()`)
+- [x] Rewards catalog grouped by local merchant with point costs and a locked state when the balance is too low
+- [x] Redeem flow: confirm, deduct points, show the digital gift card code (`TAP-XXXX-XXXX`)
+- [x] Redemption history on the profile
+- [x] Staff mode: pick a program, see the roster, tap a student to confirm attendance, show a confirmation
+- [x] Staff mode uses `Theme.staff` (City Green) so it is clearly different from student mode
+- [x] Demo controls: switch between student and staff, and reset the demo (`store.resetDemo()`)
+- [x] Extra, added at the owner's request while ahead of schedule: staff "at a glance" dashboard (today's numbers, 7-day check-ins chart, one session from a level-up, recent check-ins)
+- [x] Extra, added at the owner's request while ahead of schedule: iPad layout for staff mode (sidebar, dashboard, card-grid roster)
 
 ### Sunday 12:00 to 2:00 PM: Wire the full loop
 - [ ] Staff confirms Jordan's second Robotics session, then the student side shows: level complete moment (+25), Century Club badge, and "Up next" moves to Coding and Tech Club at Conely Library

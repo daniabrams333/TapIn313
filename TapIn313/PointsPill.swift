@@ -4,12 +4,14 @@ import SwiftUI
 struct PointsPill: View {
     let points: Int
     var suffix: String?
+    /// "+" for points earned, "−" for points spent.
+    var sign = "+"
 
     var body: some View {
         HStack(spacing: 4) {
             Image(systemName: "star.fill")
                 .accessibilityHidden(true)
-            Text("+\(points)")
+            Text("\(sign)\(points)")
             if let suffix {
                 Text(suffix)
             }
