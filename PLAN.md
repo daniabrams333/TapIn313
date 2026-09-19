@@ -20,7 +20,7 @@ If Sunday noon arrives and the full loop is not working, drop map polish and the
 - [x] App name chosen: Tap In 313 (Xcode project `TapIn313`, display name "Tap In")
 - [x] City of Detroit brand palette applied in `Theme.swift`, app set to light mode
 - [x] GitHub repo created and connected
-- [ ] Skeleton builds and runs in the simulator (four tabs, Jordan at 60 points)
+- [x] Skeleton builds and runs in the simulator (four tabs, Jordan at 60 points)
 
 ## Schedule
 
@@ -30,14 +30,14 @@ If Sunday noon arrives and the full loop is not working, drop map polish and the
 - [x] SwiftUI skeleton
 - [x] Name and palette
 - [x] CLAUDE.md
-- [ ] Confirm the skeleton compiles and runs; fix compile errors only
+- [x] Confirm the skeleton compiles and runs; fix compile errors only
 
 ### Saturday 3:00 to 8:00 PM: Core screens
-- [ ] Program list with search or category filter, showing site, venue type, points, and a "Free ride from your school" tag
-- [ ] Program detail: site, venue type, schedule, grades, address, points, join button
+- [x] Program list with search or category filter, showing site, venue type, points, and a "Free ride from your school" tag
+- [x] Program detail: site, venue type, schedule, grades, address, points, join button
 - [ ] Programs map with pins for all 14 programs, tapping a pin opens the detail
-- [ ] "Your next step starts here" card at the top of the Programs tab, driven by `store.upNext(for:)`
-- [ ] Footer note on the Programs screen (sample data and independent project disclaimer)
+- [x] "Your next step starts here" card at the top of the Programs tab, driven by `store.upNext(for:)`
+- [x] Footer note on the Programs screen (sample data and independent project disclaimer)
 
 ### Saturday 8:00 to 11:00 PM: Profile and My Path
 - [ ] Profile screen: avatar (`Theme.avatarStyle`), points balance, badges grid, activity history with "Checked in by staff at [time]"

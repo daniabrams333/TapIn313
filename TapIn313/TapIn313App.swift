@@ -53,49 +53,6 @@ struct StudentTabs: View {
     }
 }
 
-struct ProgramsScreen: View {
-    @Environment(AppStore.self) private var store
-
-    var body: some View {
-        NavigationStack {
-            List {
-                if let next = store.upNext(for: store.currentStudentID) {
-                    Section("Your next step starts here") {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("\(next.track.name): \(next.level.title)")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                            Text(next.program.name).font(.headline)
-                            Text("\(next.program.site) • \(next.program.schedule)")
-                                .font(.subheadline)
-                            if next.program.offersFreeRide {
-                                Label("Free ride from your school", systemImage: "bus.fill")
-                                    .font(.footnote)
-                            }
-                        }
-                    }
-                }
-                Section("All programs") {
-                    ForEach(store.programs) { program in
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(program.name).font(.headline)
-                            Text("\(program.site) • \(program.points) points")
-                                .font(.subheadline)
-                                .foregroundStyle(.secondary)
-                        }
-                    }
-                }
-                Section {
-                    Text("Site and activity names come from GOAL Line Detroit. Schedules and details are samples for this demo. Tap In 313 is an independent project and is not an official City of Detroit app.")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .navigationTitle("Programs")
-        }
-    }
-}
-
 struct PathScreen: View {
     @Environment(AppStore.self) private var store
 
