@@ -14,8 +14,10 @@ struct ProfileScreen: View {
                 badgesSection
                 historySection
                 demoControlsSection
+                aboutSection
             }
             .navigationTitle("Profile")
+            .brandMark()
             .navigationDestination(for: Redemption.self) { redemption in
                 GiftCardScreen(redemption: redemption)
             }
@@ -151,6 +153,26 @@ struct ProfileScreen: View {
             )
         }
         return (checkIns + levels + redemptions).sorted { $0.date > $1.date }
+    }
+
+    // MARK: About
+
+    private var aboutSection: some View {
+        Section {
+            VStack(spacing: 12) {
+                BrandLockup()
+                Text("Tap In 313 is an independent project and is not an official City of Detroit app. Site and activity names come from GOAL Line Detroit. Schedules, rewards, and merchants are samples for this demo.")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.vertical, 8)
+        } header: {
+            Text("About")
+                .font(.headline)
+                .foregroundStyle(.primary)
+                .textCase(nil)
+        }
     }
 
     // MARK: Demo controls

@@ -50,6 +50,7 @@ struct RewardsScreen: View {
                 BalanceBar(balance: balance)
             }
             .navigationTitle("Rewards")
+            .brandMark()
             .navigationDestination(item: $redeemed) { redemption in
                 GiftCardScreen(redemption: redemption)
             }

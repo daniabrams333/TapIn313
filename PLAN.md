@@ -67,7 +67,7 @@ No work planned.
 ### Sunday 2:00 to 4:00 PM: Polish
 - [ ] Unlock animation (respect Reduce Motion)
 - [ ] Empty states (no track chosen, no redemptions yet, not enough points)
-- [ ] App icon using brand colors (no City logo, no "Rise Higher")
+- [x] App icon using brand colors (no City logo, no "Rise Higher")
 - [ ] Accessibility pass: labels, 44 pt targets, Dynamic Type, never color alone, contrast per `Theme` pairings
 
 ### Sunday 4:00 to 8:00 PM: Public site

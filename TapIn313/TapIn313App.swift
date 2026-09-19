@@ -18,11 +18,27 @@ struct TapIn313App: App {
 
 struct RootView: View {
     @Environment(AppStore.self) private var store
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var showsSplash = true
 
     var body: some View {
-        switch store.mode {
-        case .student: StudentTabs()
-        case .staff: StaffHomeView()
+        ZStack {
+            switch store.mode {
+            case .student: StudentTabs()
+            case .staff: StaffHomeView()
+            }
+
+            if showsSplash {
+                SplashScreen()
+                    .transition(.opacity)
+            }
+        }
+        .task {
+            try? await Task.sleep(for: .seconds(1.3))
+            // With Reduce Motion on, the splash just disappears instead of fading.
+            withAnimation(reduceMotion ? nil : .easeOut(duration: 0.4)) {
+                showsSplash = false
+            }
         }
     }
 }

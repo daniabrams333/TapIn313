@@ -27,6 +27,10 @@ struct ProgramsScreen: View {
                 ViewModeToggle(showMap: $showMap)
             }
             .navigationTitle("Programs")
+            // The list/map switch is wrapped in a Group with a top inset, which stops a large title
+            // from drawing and leaves a blank band. An inline title avoids both.
+            .navigationBarTitleDisplayMode(.inline)
+            .brandMark()
             .navigationDestination(for: Program.self) { program in
                 ProgramDetailScreen(program: program)
             }

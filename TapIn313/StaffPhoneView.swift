@@ -49,6 +49,7 @@ struct StaffPhoneView: View {
             .navigationDestination(for: Program.self) { program in
                 StaffRosterScreen(program: program)
             }
+            .brandMark(onDark: true)
             .staffProfileButton()
         }
         .tint(Theme.onStaff)

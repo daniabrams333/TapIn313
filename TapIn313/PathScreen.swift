@@ -31,6 +31,7 @@ struct PathScreen: View {
             }
             .background(Color(.systemGroupedBackground))
             .navigationTitle("My path")
+            .brandMark()
             .navigationDestination(for: Program.self) { program in
                 ProgramDetailScreen(program: program)
             }
