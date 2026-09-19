@@ -66,10 +66,26 @@ If time runs short, cut map polish and the badge animation first. Never cut the 
 
 ## Conventions
 - Use semantic SwiftUI font styles (`.headline`, `.body`, `.title2`). Never hardcode font sizes. Support Dynamic Type.
-- Use `Theme` colors for fills and accents. Use `.primary` and `.secondary` for text so dark mode works.
-- Points and badges use `Theme.gold` with ink text, never white text.
+- Use `Theme` colors only. Never hardcode hex values in views. Use the paired text colors (`Theme.onPrimary`, `Theme.onHighlight`, and so on) so contrast stays accessible.
+- The app stays in light mode (`.preferredColorScheme(.light)`) because the City palette is defined for light backgrounds. A dark palette is roadmap.
+- Use `Theme.highlight` (Accent Yellow) sparingly, for points, badges, and key calls to action, with Rise Blue text.
+- Never convey meaning with color alone. Pair color with an icon or text (for example a checkmark and the word "Complete").
 - Every tappable element needs an accessibility label and a minimum 44 pt hit target.
 - One screen per file. Keep it compiling at every step. Commit after each working screen.
+
+## Brand and colors
+Palette follows the City of Detroit Brand Guide Standards v2.0 (June 2026). This is an independent project. It is not an official City app and must not look like one.
+- Rise Blue `#1D3A6B`: app tint, primary buttons, student headers (white text).
+- City Green `#004445`: staff mode (white text).
+- Spirit Green `#279989`: progress bars and checkmarks. Never small text on white (only about 3.5:1). Dark text only on top of it.
+- Light Green `#9FD5B3`: soft fills such as a completed level card (Rise Blue text).
+- Accent Yellow `#FEB70D`: points, badges, calls to action (Rise Blue text, never white).
+- Neutrals: use iOS system grays. The guide names light grey and beige for merchandise but gives no hex values.
+- Do NOT use the City of Detroit logo or the "Rise Higher" tagline anywhere. The guide limits them to City departments, partners, and authorized vendors.
+- The City's accessibility standard is WCAG 2.1 AA: 4.5:1 text contrast, no light-weight fonts for body text, 16 pt or larger on the web.
+- Voice: sincere, jargon-free, neighbor to neighbor. Example: "Your next step starts here." The Up next section uses that line.
+- Fonts: the app uses system fonts (Dynamic Type) for the demo. The public site uses Montserrat for headlines and body and Roboto for tables and forms, both from Google Fonts. Avoid other fonts.
+- Photos: the City discourages AI-generated and stock imagery. Use real screenshots of the app on the site.
 
 ## Privacy note
 Students are minors. Mock data uses first name and last initial only. Do not add fields for full names, photos, home address, or precise location. Under-13 use would need verified parental consent, which is roadmap.

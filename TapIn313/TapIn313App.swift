@@ -9,7 +9,9 @@ struct TapIn313App: App {
         WindowGroup {
             RootView()
                 .environment(store)
-                .tint(Theme.signal)
+                .tint(Theme.primary)
+                // The City palette is defined for light backgrounds, so the demo stays in light mode.
+                .preferredColorScheme(.light)
         }
     }
 }
@@ -58,7 +60,7 @@ struct ProgramsScreen: View {
         NavigationStack {
             List {
                 if let next = store.upNext(for: store.currentStudentID) {
-                    Section("Up next on your path") {
+                    Section("Your next step starts here") {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("\(next.track.name): \(next.level.title)")
                                 .font(.subheadline)
@@ -84,7 +86,7 @@ struct ProgramsScreen: View {
                     }
                 }
                 Section {
-                    Text("Site and activity names come from GOAL Line Detroit. Schedules and details are samples for this demo.")
+                    Text("Site and activity names come from GOAL Line Detroit. Schedules and details are samples for this demo. Tap In 313 is an independent project and is not an official City of Detroit app.")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                 }
