@@ -49,7 +49,7 @@ struct StaffPhoneView: View {
             .navigationDestination(for: Program.self) { program in
                 StaffRosterScreen(program: program)
             }
-            .toolbar { StudentModeToolbarItem() }
+            .staffProfileButton()
         }
         .tint(Theme.onStaff)
     }

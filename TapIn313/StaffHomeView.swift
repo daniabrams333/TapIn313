@@ -26,22 +26,34 @@ extension View {
     }
 }
 
-/// "Student mode" button for the top of every staff screen.
-struct StudentModeToolbarItem: ToolbarContent {
-    @Environment(AppStore.self) private var store
+extension View {
+    /// Adds the staff profile button to the top right of a staff screen. It opens the profile sheet.
+    func staffProfileButton() -> some View {
+        modifier(StaffProfileButton())
+    }
+}
 
-    var body: some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                store.mode = .student
-            } label: {
-                Label("Student mode", systemImage: "person.fill")
-                    .font(.subheadline.weight(.semibold))
-                    .frame(minHeight: 44)
+private struct StaffProfileButton: ViewModifier {
+    @State private var showsProfile = false
+
+    func body(content: Content) -> some View {
+        content
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showsProfile = true
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title3)
+                            .frame(minWidth: 44, minHeight: 44)
+                    }
+                    .foregroundStyle(Theme.onStaff)
+                    .accessibilityLabel("Staff profile")
+                }
             }
-            .foregroundStyle(Theme.onStaff)
-            .accessibilityLabel("Switch to student mode")
-        }
+            .sheet(isPresented: $showsProfile) {
+                StaffProfileScreen()
+            }
     }
 }
 

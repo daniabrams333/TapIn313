@@ -64,7 +64,7 @@ struct StaffSplitView: View {
             .navigationTitle("Overview")
             .navigationBarTitleDisplayMode(.inline)
             .staffBar()
-            .toolbar { StudentModeToolbarItem() }
+            .staffProfileButton()
 
         case .program(let id):
             if let program = store.program(id) {

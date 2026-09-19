@@ -40,7 +40,7 @@ struct StaffRosterScreen: View {
         .navigationTitle(program.name)
         .navigationBarTitleDisplayMode(.inline)
         .staffBar()
-        .toolbar { StudentModeToolbarItem() }
+        .staffProfileButton()
     }
 
     // MARK: Layouts
