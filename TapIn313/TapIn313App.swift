@@ -106,27 +106,6 @@ struct RewardsScreen: View {
     }
 }
 
-struct ProfileScreen: View {
-    @Environment(AppStore.self) private var store
-
-    var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    Text(store.currentStudent.displayName).font(.title2)
-                    Text("\(store.pointsBalance(for: store.currentStudentID)) points")
-                        .font(.headline)
-                }
-                Section("Demo controls") {
-                    Button("Switch to staff mode") { store.mode = .staff }
-                    Button("Reset demo", role: .destructive) { store.resetDemo() }
-                }
-            }
-            .navigationTitle("Profile")
-        }
-    }
-}
-
 // MARK: - Celebration placeholder (replaced by the real unlock moment)
 
 struct UnlockPlaceholder: View {

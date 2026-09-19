@@ -71,4 +71,29 @@ enum Theme {
     static func avatarStyle(_ index: Int) -> (background: Color, text: Color) {
         avatarStyles[index % avatarStyles.count]
     }
+
+    // MARK: Pixel avatar people
+    //
+    // Skin and hair are illustration colors, not City brand colors, so they live here
+    // and nowhere else. Skin runs across a range of brown tones. Shirts use brand colors.
+
+    /// Base tone plus a slightly darker shade for the mouth and neck.
+    static let avatarSkins: [(base: Color, shade: Color)] = [
+        (Color(hex: 0x6B4226), Color(hex: 0x54321C)),   // deep brown
+        (Color(hex: 0x8D5524), Color(hex: 0x6F431C)),   // medium-deep brown
+        (Color(hex: 0xB07A4F), Color(hex: 0x8F6039))    // medium brown
+    ]
+
+    static let avatarHair = Color(hex: 0x1F1410)
+
+    /// Shirt colors that read clearly against the Light Green avatar backdrop.
+    static let avatarShirts: [Color] = [riseBlue, cityGreen, accentYellow, riseBlue, cityGreen, accentYellow]
+
+    /// Skin tone for each student index, so the six demo students look different.
+    private static let avatarSkinPattern = [0, 1, 2, 0, 1, 2]
+
+    static func avatarLook(_ index: Int) -> (skin: Color, shade: Color, hair: Color, shirt: Color, backdrop: Color) {
+        let skin = avatarSkins[avatarSkinPattern[index % avatarSkinPattern.count]]
+        return (skin.base, skin.shade, avatarHair, avatarShirts[index % avatarShirts.count], softFill)
+    }
 }

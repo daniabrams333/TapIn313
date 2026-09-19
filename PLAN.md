@@ -40,7 +40,7 @@ If Sunday noon arrives and the full loop is not working, drop map polish and the
 - [x] Footer note on the Programs screen (sample data and independent project disclaimer)
 
 ### Saturday 8:00 to 11:00 PM: Profile and My Path
-- [ ] Profile screen: avatar (`Theme.avatarStyle`), points balance, badges grid, activity history with "Checked in by staff at [time]"
+- [x] Profile screen: avatar (`Theme.avatarStyle`), points balance, badges grid, activity history with "Checked in by staff at [time]"
 - [ ] My Path tab: track picker cards ("What sounds like you?"), level progress ("1 of 2 sessions"), what unlocks next, track payoff
 - [ ] Switching tracks keeps earned progress and bonuses
 
