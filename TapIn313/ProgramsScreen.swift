@@ -51,6 +51,19 @@ struct ProgramsScreen: View {
                         .foregroundStyle(.primary)
                         .textCase(nil)
                 }
+            } else {
+                // No track yet, or every level on the track is done.
+                Section {
+                    NoNextStepCard(trackName: store.currentTrack(for: store.currentStudentID)?.name) {
+                        store.studentTab = .path
+                    }
+                    .listRowBackground(Theme.primary)
+                } header: {
+                    Text("Your next step starts here")
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                        .textCase(nil)
+                }
             }
 
             Section {
@@ -140,6 +153,33 @@ private struct UpNextCard: View {
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Up next: \(program.name) at \(program.site), \(program.schedule). \(trackName), \(levelTitle) level.")
         .accessibilityHint("Opens program details")
+    }
+}
+
+/// Empty state for the Up next card. `trackName` is nil when no track is chosen, and set when the track is finished.
+private struct NoNextStepCard: View {
+    let trackName: String?
+    let onChoose: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(trackName == nil ? "Pick a track to get started" : "You finished the \(trackName ?? "") track")
+                .font(.title3.bold())
+            Text(trackName == nil
+                 ? "A track links programs into a path, so you always know what comes next."
+                 : "Nice work. Pick another track in My path and keep going.")
+                .font(.subheadline)
+            Button(action: onChoose) {
+                Text(trackName == nil ? "Choose a track" : "See other tracks")
+                    .font(.headline)
+                    .foregroundStyle(Theme.onHighlight)
+                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .background(Theme.highlight, in: RoundedRectangle(cornerRadius: 10))
+            }
+            .buttonStyle(.plain)
+        }
+        .foregroundStyle(Theme.onPrimary)
+        .padding(.vertical, 8)
     }
 }
 

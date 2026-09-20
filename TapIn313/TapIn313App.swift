@@ -49,15 +49,22 @@ struct StudentTabs: View {
     @Environment(AppStore.self) private var store
 
     var body: some View {
-        TabView {
+        TabView(selection: Binding(
+            get: { store.studentTab },
+            set: { store.studentTab = $0 }
+        )) {
             ProgramsScreen()
                 .tabItem { Label("Programs", systemImage: "map.fill") }
+                .tag(StudentTab.programs)
             PathScreen()
                 .tabItem { Label("My path", systemImage: "signpost.right.fill") }
+                .tag(StudentTab.path)
             RewardsScreen()
                 .tabItem { Label("Rewards", systemImage: "gift.fill") }
+                .tag(StudentTab.rewards)
             ProfileScreen()
                 .tabItem { Label("Profile", systemImage: "person.crop.circle.fill") }
+                .tag(StudentTab.profile)
         }
         // Presents pending celebrations one at a time. Dismissing shows the next one.
         .sheet(item: Binding(

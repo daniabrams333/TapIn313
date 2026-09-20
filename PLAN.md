@@ -58,15 +58,15 @@ No work planned.
 - [x] Extra, added at the owner's request while ahead of schedule: iPad layout for staff mode (sidebar, dashboard, card-grid roster)
 
 ### Sunday 12:00 to 2:00 PM: Wire the full loop
-- [ ] Staff confirms Jordan's second Robotics session, then the student side shows: level complete moment (+25), Century Club badge, and "Up next" moves to Coding and Tech Club at Conely Library
-- [ ] Unlock sheets present in order: level, track, badge
-- [ ] Jordan redeems the wing combo or slice and sees the code
-- [ ] Reset returns to the exact starting state
-- [ ] Fix what breaks
+- [x] Staff confirms Jordan's second Robotics session, then the student side shows: level complete moment (+25), Century Club badge, and "Up next" moves to Coding and Tech Club at Conely Library
+- [x] Unlock sheets present in order: level, track, badge
+- [x] Jordan redeems the wing combo or slice and sees the code
+- [x] Reset returns to the exact starting state
+- [x] Fix what breaks
 
 ### Sunday 2:00 to 4:00 PM: Polish
 - [x] Unlock animation (respect Reduce Motion)
-- [ ] Empty states (no track chosen, no redemptions yet, not enough points)
+- [x] Empty states (no track chosen, no redemptions yet, not enough points)
 - [x] App icon using brand colors (no City logo, no "Rise Higher")
 - [ ] Accessibility pass: labels, 44 pt targets, Dynamic Type, never color alone, contrast per `Theme` pairings
 

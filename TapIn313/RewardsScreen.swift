@@ -28,6 +28,8 @@ struct RewardsScreen: View {
     var body: some View {
         NavigationStack {
             List {
+                emptyHint
+
                 ForEach(merchants) { merchant in
                     Section {
                         ForEach(rewards(for: merchant)) { reward in
@@ -60,6 +62,31 @@ struct RewardsScreen: View {
                     merchant: store.merchant(reward.merchantID),
                     balance: balance,
                     onConfirm: { confirm(reward) }
+                )
+            }
+        }
+    }
+
+    /// Shown while the student cannot afford anything yet, or has not redeemed anything yet.
+    @ViewBuilder
+    private var emptyHint: some View {
+        if let cheapest = store.rewards.map(\.cost).min(), balance < cheapest {
+            Section {
+                RewardsHint(
+                    symbol: "lock.fill",
+                    title: "Your first reward is \(cheapest - balance) points away",
+                    message: "Get checked in by staff at a program to earn points.",
+                    buttonTitle: "Find a program"
+                ) {
+                    store.studentTab = .programs
+                }
+            }
+        } else if store.redemptions(for: studentID).isEmpty {
+            Section {
+                RewardsHint(
+                    symbol: "gift.fill",
+                    title: "No rewards redeemed yet",
+                    message: "Pick one below and confirm to get a digital gift card code. Your codes are saved on your profile."
                 )
             }
         }
@@ -102,6 +129,46 @@ private struct BalanceBar: View {
         .background(.bar)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("You have \(balance) points")
+    }
+}
+
+private struct RewardsHint: View {
+    let symbol: String
+    let title: String
+    let message: String
+    var buttonTitle: String?
+    var action: (() -> Void)?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top, spacing: 12) {
+                Image(systemName: symbol)
+                    .font(.title3)
+                    .foregroundStyle(Theme.primary)
+                    .frame(width: 28)
+                    .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(title)
+                        .font(.headline)
+                    Text(message)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .accessibilityElement(children: .combine)
+
+            if let buttonTitle, let action {
+                Button(action: action) {
+                    Text(buttonTitle)
+                        .font(.headline)
+                        .foregroundStyle(Theme.onPrimary)
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                        .background(Theme.primary, in: RoundedRectangle(cornerRadius: 10))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.vertical, 6)
     }
 }
 

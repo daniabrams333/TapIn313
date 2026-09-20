@@ -5,6 +5,10 @@ enum AppMode {
     case student, staff
 }
 
+enum StudentTab {
+    case programs, path, rewards, profile
+}
+
 /// One in-memory store shared by the student app and the staff mode.
 /// When staff confirm attendance, the student's points, level progress, and
 /// badges update instantly.
@@ -14,6 +18,8 @@ final class AppStore {
     // MARK: State
 
     var mode: AppMode = .student
+    /// Selected student tab. Lives here so an empty state can send the student to another tab.
+    var studentTab: StudentTab = .programs
     var currentStudentID = "jordan"
 
     let programs = MockData.programs
@@ -43,6 +49,7 @@ final class AppStore {
     /// Puts everything back to the starting demo state. Use before each rehearsal.
     func resetDemo() {
         mode = .student
+        studentTab = .programs
         currentStudentID = "jordan"
         loadSeed()
     }
