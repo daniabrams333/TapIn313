@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tap In 313: Your next step starts here</title>
+  <meta name="description" content="Tap In 313 is an iOS rewards app that helps Detroit students in grades 6 to 8 get into after-school programs, follow an interest track, and redeem points at local businesses. Try the interactive demo.">
+  <meta name="theme-color" content="#1D3A6B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">313</span>Tap In 313</a>
+      <nav class="nav" aria-label="Page sections">
+        <a href="#demo">Try the demo</a>
+        <a href="#why">Why now</a>
+        <a href="#how">How it works</a>
+        <a href="#judges">For judges</a>
+        <a href="#roadmap">Roadmap</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <span class="eyebrow">A rewards app for Detroit students</span>
+        <h1>Your next step starts here.</h1>
+        <p class="lead">Tap In 313 helps Detroit students in grades 6 to 8 get through the door of an after-school program, then shows them what to do next. Students earn points and badges for showing up, follow an interest track from one program to the next, and redeem points for gift cards at local businesses.</p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#demo">Try the interactive demo</a>
+          <a class="btn btn--ghost" href="#judges">Jump to the judge's summary</a>
+        </div>
+        <ul class="chips" aria-label="At a glance">
+          <li class="chip">iOS app, built with SwiftUI</li>
+          <li class="chip">Grades 6 to 8</li>
+          <li class="chip">Sample data for this demo</li>
+        </ul>
+        <p class="hero-fine">Tap In 313 is an independent project. It is not an official City of Detroit app.</p>
+      </div>
+    </section>
+
+    <!-- Why now -->
+    <section class="section" id="why">
+      <div class="wrap">
+        <span class="eyebrow">Why now</span>
+        <h2>The City is opening the doors. We help students walk through them.</h2>
+        <p class="lead">The City of Detroit is investing to expand GOAL Line Detroit after-school programming. More sites mean more chances, but a student still has to find a program, show up, and see how it connects to the next one. That is the gap Tap In 313 is built for.</p>
+
+        <ul class="facts">
+          <li class="fact"><b>$2.2 million</b><span>City investment to expand GOAL Line Detroit after-school programming</span></li>
+          <li class="fact"><b>7 new sites</b><span>Four recreation centers and three libraries, added to 33 existing locations and partners for a total of 40</span></li>
+          <li class="fact"><b>Nearly 60</b><span>programs and activities, with locations in every City Council district</span></li>
+          <li class="fact"><b>2,708 students</b><span>K-8 students served since 2018. The expansion adds up to 1,000 more, for about 3,700 total</span></li>
+        </ul>
+
+        <p class="note">The seven new sites are the Helen Moore, Coleman A. Young, Williams, and A.B. Ford Recreation Centers, and the Conely, Lincoln, and Chaney Libraries. Transportation to and from school is part of GOAL Line, and two behavioral specialists support students' social and emotional needs. The City lists academic improvement, socioemotional improvement, drug and violence prevention, character development, and leadership development as benefits.</p>
+        <p class="note">Figures are from the City of Detroit's announcement of the expansion. News coverage of the announcement:
+          <a href="https://www.bridgedetroit.com/detroit-mayor-announces-7-new-after-school-sites-with-2-2m-in-city-funds/">BridgeDetroit</a>,
+          <a href="https://www.chalkbeat.org/detroit/2026/09/10/seven-new-detroit-after-school-sites-to-open-with-city-funds/">Chalkbeat Detroit</a>, and
+          <a href="https://www.wxyz.com/news/2-2-million-to-expand-free-after-school-goal-line-program-to-7-new-locations">WXYZ</a>.</p>
+        <!-- Add a link to the City's own press release here if you have the URL. -->
+
+        <div class="callout">
+          <p>We complement GOAL Line Detroit. We do not compete with it, and we do not claim a partnership with it. Our job is participation: getting students through the door and giving them a clear path so programs stop feeling disjointed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="demo section on-dark" id="demo" aria-labelledby="demo-title">
+      <div class="wrap">
+        <span class="eyebrow">Interactive demo</span>
+        <h2 id="demo-title">Try the app. Follow Jordan's story.</h2>
+        <p class="lead">This is a web simulation of the iOS app. It runs the same rules on the same sample data, so what you tap here matches what the app does. Follow the five steps, or explore on your own. Refreshing the page starts over.</p>
+
+        <div class="demo-grid">
+          <div class="demo-stage">
+            <div class="demo-controls" role="group" aria-label="Demo controls">
+              <div class="segmented" role="group" aria-label="Who is using the app">
+                <button type="button" data-mode="student" aria-pressed="true">Student view</button>
+                <button type="button" data-mode="staff" aria-pressed="false">Staff view</button>
+              </div>
+              <button type="button" class="btn-small" id="reset">Reset demo</button>
+            </div>
+            <div class="phone">
+              <div class="screen" id="phone" role="region" aria-label="Tap In 313 app simulator">
+                <noscript><p style="padding:64px 24px">The interactive demo needs JavaScript. The rest of this page describes what it shows.</p></noscript>
+              </div>
+            </div>
+          </div>
+
+          <aside class="tour" aria-labelledby="tour-title">
+            <h3 id="tour-title">The 3-minute story</h3>
+            <p class="note" style="margin-top:0">Each step has a "Show me" button that takes you to the right screen. Steps check themselves off as you go.</p>
+            <ol id="tour-steps"></ol>
+            <p class="note">Everything in this demo is sample data: the students, schedules, points, tracks, track payoffs, and every merchant. Site and activity names come from GOAL Line Detroit. The gift card codes are demo codes and are not valid anywhere.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <span class="eyebrow">How it works</span>
+        <h2>Show up, follow a path, get rewarded.</h2>
+        <ol class="steps">
+          <li>
+            <h3>Find a program and tap in</h3>
+            <p>Students browse programs on a map or in a list, see the site, schedule, address, and points, and join. When they arrive, staff tap to confirm their attendance. That confirmation is what awards the points, so points always mean a student really showed up.</p>
+          </li>
+          <li>
+            <h3>Follow an interest track</h3>
+            <p>Four tracks connect programs into a path with three levels: Explore, Build, and Launch. An "Up next" card on the Programs tab always answers the question "what's next?" Finishing a level pays a one-time bonus and plays an unlock moment.</p>
+          </li>
+          <li>
+            <h3>Earn points, redeem locally</h3>
+            <p>Points and badges add up as students attend. They can redeem points for digital gift cards from local restaurants and shops, and see the gift card code right away.</p>
+          </li>
+        </ol>
+
+        <div class="cards">
+          <article class="card"><h3>Programs, map and list</h3><p>Every program shows its site, venue type, schedule, grades, address, points earned, and a "Free ride from your school" tag.</p></article>
+          <article class="card"><h3>"Up next" card</h3><p>The next program on the student's path sits at the top of the Programs tab: "Your next step starts here."</p></article>
+          <article class="card"><h3>Staff attendance</h3><p>Staff pick a program, see the roster, and tap to confirm each student. The student's points, level, and badges update instantly.</p></article>
+          <article class="card"><h3>Local rewards</h3><p>A rewards catalog grouped by local merchant, with a locked state until a student has enough points.</p></article>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>The four interest tracks (sample tracks for this demo)</caption>
+            <thead>
+              <tr><th scope="col">Track</th><th scope="col">Explore (+25)</th><th scope="col">Build (+40)</th><th scope="col">Launch (+60)</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Tech Builder</th><td>Robotics</td><td>Coding and Tech Club</td><td>AI Coding</td></tr>
+              <tr><th scope="row">Creator</th><td>Art Club</td><td>Music Studio: Music Creation</td><td>Podcasting</td></tr>
+              <tr><th scope="row">Maker and Entrepreneur</th><td>Leather Making</td><td>Financial Literacy</td><td>Content Creation</td></tr>
+              <tr><th scope="row">Athlete</th><td>Basketball Drills</td><td>Track and Field</td><td>Swimming</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:12px">Each level is one program and 2 sessions. Bonus points are paid once, when a level is completed, and never twice. Programs are real GOAL Line activity names. Which track a program belongs to, and every track payoff, is a sample idea and not a confirmed event or offer.</p>
+      </div>
+    </section>
+
+    <!-- For judges -->
+    <section class="section section--white" id="judges">
+      <div class="wrap">
+        <span class="eyebrow">For judges</span>
+        <h2>What to know before you score it</h2>
+        <p class="lead">A short, honest summary of what is real, what is sample, how it is built, and what is deliberately left for later.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>What is real and what is sample</caption>
+            <thead><tr><th scope="col">Item</th><th scope="col">Status</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">GOAL Line site names</th><td><span class="tag tag--real">Real</span></td><td>From the City of Detroit announcement.</td></tr>
+              <tr><th scope="row">GOAL Line activity names</th><td><span class="tag tag--real">Real</span></td><td>From the City of Detroit announcement.</td></tr>
+              <tr><th scope="row">Libraries that host tutoring</th><td><span class="tag tag--real">Real</span></td><td>Redford, Parkman, Edison, Sherwood, and Hubbard libraries.</td></tr>
+              <tr><th scope="row">Which activity runs at which site</th><td><span class="tag tag--sample">Sample</span></td><td>Placed for the demo. Not a real schedule.</td></tr>
+              <tr><th scope="row">Days, times, and descriptions</th><td><span class="tag tag--sample">Sample</span></td><td>Written for the demo.</td></tr>
+              <tr><th scope="row">Points, tracks, and track payoffs</th><td><span class="tag tag--sample">Sample</span></td><td>Our design. Payoffs are ideas, not confirmed events or offers.</td></tr>
+              <tr><th scope="row">Students and staff</th><td><span class="tag tag--sample">Sample</span></td><td>Fictional. First name and last initial only.</td></tr>
+              <tr><th scope="row">Merchants and gift cards</th><td><span class="tag tag--sample">Sample</span></td><td>Made-up businesses. Codes are demo codes and are not valid at any store.</td></tr>
+              <tr><th scope="row">Addresses and map pins</th><td><span class="tag tag--sample">Approximate</span></td><td>From a map lookup. Pin spots are approximate.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="split">
+          <article class="card">
+            <h3>What is built</h3>
+            <ul class="checklist">
+              <li>One iOS app with a student mode and a staff mode on one shared store.</li>
+              <li>Programs as a map and a list, program detail, and joining a program.</li>
+              <li>Four interest tracks, "Up next," and My path with level progress.</li>
+              <li>Unlock moments in order: level complete, track complete, then badges.</li>
+              <li>Profile with points, badges, and history that reads "Checked in by staff at [time]."</li>
+              <li>Rewards catalog and redeem flow that shows a digital gift card code.</li>
+              <li>Staff roster with tap-to-confirm attendance, plus an "at a glance" dashboard and an iPad layout.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>How it is built</h3>
+            <ul class="checklist">
+              <li>SwiftUI for iOS 17 and later, with one observable store as the single source of truth.</li>
+              <li>The points balance is always derived: attendance points plus level bonuses minus redemptions. It is never stored separately, so it cannot drift.</li>
+              <li>No backend, no accounts, and no network layer in this build.</li>
+              <li>This web demo is a port of the app's rules to JavaScript, tested against the demo story: 60 points, then a second Robotics session gives +20 and a +25 level bonus, reaching 105 points and the Century Club badge.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Built with students in mind</h3>
+            <ul class="checklist">
+              <li><strong>Privacy:</strong> students are minors, so the app holds first name and last initial only. No photos, home address, or precise location. Use by children under 13 would need verified parental consent, which is on the roadmap.</li>
+              <li><strong>Accessibility:</strong> Dynamic Type, VoiceOver labels, 44 point minimum tap targets, and Reduce Motion support. Meaning is never carried by color alone: every state pairs color with an icon or a word.</li>
+              <li><strong>Contrast:</strong> colors follow the City brand palette with text pairings chosen to meet WCAG 2.1 AA.</li>
+              <li><strong>Independent:</strong> the app does not use the City logo or tagline and is not an official City app.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="callout">
+          <p>The web demo simplifies a few things: avatars are initials instead of pixel-art characters, and the map is a sketch with approximate pin spots instead of a live map. The iOS app is the submission.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section" id="roadmap">
+      <div class="wrap">
+        <span class="eyebrow">Roadmap</span>
+        <h2>What comes after the demo</h2>
+        <p class="lead">Scope for this build is locked so the core loop works well. These are the next steps, none of which are in this build.</p>
+        <div class="split">
+          <article class="card">
+            <h3>Making it real</h3>
+            <ul class="checklist checklist--later">
+              <li>Real sign-in and a live backend</li>
+              <li>Real merchant integrations</li>
+              <li>Push notifications</li>
+              <li>Parental consent flow for students under 13</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Helping families</h3>
+            <ul class="checklist checklist--later">
+              <li>Parent accounts and "arrived safely" notifications</li>
+              <li>"Near my school" distance and a 2-mile filter</li>
+              <li>Waitlists and spots left</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Growing it</h3>
+            <ul class="checklist checklist--later">
+              <li>Streak badges and leaderboards</li>
+              <li>Grades 9 to 12</li>
+              <li>A dark palette</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Tap In 313 is an independent project and is not an official City of Detroit app.</strong> It is not affiliated with or endorsed by the City of Detroit or GOAL Line Detroit.</p>
+      <p>Site and activity names come from GOAL Line Detroit. Schedules and details are samples for this demo. So are all students, points, tracks, track payoffs, and merchants. Nothing on this page is a real or confirmed schedule, event, or offer.</p>
+      <p>Colors follow the City of Detroit Brand Guide Standards. The City logo and tagline are not used.</p>
+    </div>
+  </footer>
+
+  <div id="live" class="sr-only" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="store.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

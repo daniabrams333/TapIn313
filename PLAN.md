@@ -72,11 +72,11 @@ No work planned.
 
 ### Sunday 4:00 to 8:00 PM: Public site
 Can be built in parallel with the app. Static site, deployable anywhere free.
-- [ ] Page structure: hero, the problem, the solution (points, badges, tracks, local rewards), how it works (3 steps), roadmap, footer
-- [ ] "Why now" section using the City announcement facts in CLAUDE.md, with a link to the source
-- [ ] Brand: City palette, Montserrat for headlines and body, Roboto for tables and forms (Google Fonts), body text 16px or larger, no light font weights for body, WCAG AA contrast
+- [x] Page structure: hero, the problem, the solution (points, badges, tracks, local rewards), how it works (3 steps), roadmap, footer
+- [x] "Why now" section using the City announcement facts in CLAUDE.md, with a link to the source
+- [x] Brand: City palette, Montserrat for headlines and body, Roboto for tables and forms (Google Fonts), body text 16px or larger, no light font weights for body, WCAG AA contrast
 - [ ] Real screenshots of the app and a short demo video. No stock or AI-generated images.
-- [ ] Footer: "Tap In 313 is an independent project and is not an official City of Detroit app." Sample data note. No City logo, no "Rise Higher."
+- [x] Footer: "Tap In 313 is an independent project and is not an official City of Detroit app." Sample data note. No City logo, no "Rise Higher."
 - [ ] Waitlist or contact form (simple, no personal data about minors)
 - [ ] Deploy and open it on a phone
 - [ ] Swap placeholder images for final screenshots
