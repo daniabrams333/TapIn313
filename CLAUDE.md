@@ -73,7 +73,8 @@ If time runs short, cut map polish and the badge animation first. Never cut the 
 - Use `Theme.highlight` (Accent Yellow) sparingly, for points, badges, and key calls to action, with Rise Blue text.
 - Never convey meaning with color alone. Pair color with an icon or text (for example a checkmark and the word "Complete").
 - Every tappable element needs an accessibility label and a minimum 44 pt hit target.
-- One screen per file. Keep it compiling at every step. Commit after each working screen.
+- One screen per file. Keep it compiling at every step.
+- Git: the developer commits and pushes herself. Claude does not run `git commit` or `git push`. When a task is done, leave the changes in the working tree and say what is uncommitted. Read-only git commands are fine.
 
 ## Brand and colors
 Palette follows the City of Detroit Brand Guide Standards v2.0 (June 2026). This is an independent project. It is not an official City app and must not look like one.

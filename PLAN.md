@@ -7,7 +7,7 @@ Read CLAUDE.md first for the locked scope, data rules, brand rules, and conventi
 
 ## Rules for working through this plan
 - Work top to bottom. Finish and build each item before starting the next.
-- The project must compile at the end of every task. Commit after each working screen with a short message.
+- The project must compile at the end of every task. Do not commit or push. The developer does that herself, so leave changes uncommitted and say what changed.
 - One screen per file. Semantic SwiftUI fonts only. `Theme` colors only.
 - After creating new Swift files, list them for the developer. This Xcode project may not pick up files created outside Xcode, so she may need to add them to the `TapIn313` target by hand.
 - If a task will take much longer than its block, stop and say so instead of cutting corners silently.
