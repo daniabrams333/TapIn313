@@ -47,6 +47,7 @@ struct BadgeUnlockContent: View {
             VStack(spacing: 6) {
                 Text(badge.name)
                     .font(.largeTitle.bold())
+                    .accessibilityAddTraits(.isHeader)
                 Text(badge.detail)
                     .font(.title3)
             }

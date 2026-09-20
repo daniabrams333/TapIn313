@@ -68,7 +68,7 @@ No work planned.
 - [x] Unlock animation (respect Reduce Motion)
 - [x] Empty states (no track chosen, no redemptions yet, not enough points)
 - [x] App icon using brand colors (no City logo, no "Rise Higher")
-- [ ] Accessibility pass: labels, 44 pt targets, Dynamic Type, never color alone, contrast per `Theme` pairings
+- [x] Accessibility pass: labels, 44 pt targets, Dynamic Type, never color alone, contrast per `Theme` pairings
 
 ### Sunday 4:00 to 8:00 PM: Public site
 Can be built in parallel with the app. Static site, deployable anywhere free.

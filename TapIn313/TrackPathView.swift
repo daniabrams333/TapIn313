@@ -5,6 +5,7 @@ import SwiftUI
 /// so it never depends on color alone. Made for a Rise Blue background (white text).
 struct TrackPathView: View {
     @Environment(AppStore.self) private var store
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let track: Track
     let student: Student
     var showsTitle = true
@@ -35,7 +36,13 @@ struct TrackPathView: View {
                     .font(.subheadline.weight(.semibold))
             }
 
-            HStack(alignment: .top, spacing: 0) {
+            // Three columns fit until text gets very large. Then the levels stack, and the
+            // connecting lines are dropped because they only make sense side by side.
+            let isStacked = dynamicTypeSize.isAccessibilitySize
+            let layout = isStacked
+                ? AnyLayout(VStackLayout(alignment: .center, spacing: 20))
+                : AnyLayout(HStackLayout(alignment: .top, spacing: 0))
+            layout {
                 ForEach(track.levels.indices, id: \.self) { index in
                     let level = track.levels[index]
                     PathNode(
@@ -44,8 +51,8 @@ struct TrackPathView: View {
                         programName: store.program(level.programID)?.name ?? "",
                         status: statusText(index: index, state: states[index]),
                         state: states[index],
-                        lineBefore: index > 0 ? states[index - 1] == .complete : nil,
-                        lineAfter: index < states.count - 1 ? states[index] == .complete : nil
+                        lineBefore: !isStacked && index > 0 ? states[index - 1] == .complete : nil,
+                        lineAfter: !isStacked && index < states.count - 1 ? states[index] == .complete : nil
                     )
                 }
             }

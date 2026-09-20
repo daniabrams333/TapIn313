@@ -29,19 +29,15 @@ struct ProfileScreen: View {
     private var headerSection: some View {
         Section {
             VStack(alignment: .leading, spacing: 16) {
-                HStack(spacing: 16) {
-                    AvatarView(student: student, size: 88)
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(student.displayName)
-                            .font(.title2.bold())
-                        Text("Grade \(student.grade)")
-                            .font(.subheadline)
-                        Label("\(store.pointsBalance(for: studentID)) points", systemImage: "star.fill")
-                            .font(.headline)
-                            .foregroundStyle(Theme.onHighlight)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Theme.highlight, in: Capsule())
+                // The avatar grows with text size, so at large sizes it moves above the name.
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: 16) {
+                        AvatarView(student: student, size: 88)
+                        identityText
+                    }
+                    VStack(alignment: .leading, spacing: 12) {
+                        AvatarView(student: student, size: 88)
+                        identityText
                     }
                 }
                 .accessibilityElement(children: .ignore)
@@ -63,6 +59,21 @@ struct ProfileScreen: View {
             .padding(.vertical, 8)
         }
         .listRowBackground(Theme.primary)
+    }
+
+    private var identityText: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(student.displayName)
+                .font(.title2.bold())
+            Text("Grade \(student.grade)")
+                .font(.subheadline)
+            Label("\(store.pointsBalance(for: studentID)) points", systemImage: "star.fill")
+                .font(.headline)
+                .foregroundStyle(Theme.onHighlight)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(Theme.highlight, in: Capsule())
+        }
     }
 
     // MARK: Badges

@@ -6,6 +6,7 @@ import SwiftUI
 struct StaffRosterScreen: View {
     @Environment(AppStore.self) private var store
     @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     let program: Program
     @State private var confirmation: String?
 
@@ -33,10 +34,10 @@ struct StaffRosterScreen: View {
             if let confirmation {
                 ConfirmationBanner(message: confirmation)
                     .padding(16)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
             }
         }
-        .animation(.default, value: confirmation)
+        .animation(reduceMotion ? nil : .default, value: confirmation)
         .navigationTitle(program.name)
         .navigationBarTitleDisplayMode(.inline)
         .staffBar()
@@ -136,9 +137,15 @@ struct StaffRosterScreen: View {
                 .font(.subheadline)
             Text("Today, \(Date.now.formatted(.dateTime.weekday(.wide).month(.wide).day()))")
                 .font(.subheadline)
-            HStack(spacing: 12) {
-                Label("\(checkedIn) of \(roster.count) checked in", systemImage: "person.2.fill")
-                Label("+\(program.points) points each", systemImage: "star.fill")
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 12) {
+                    Label("\(checkedIn) of \(roster.count) checked in", systemImage: "person.2.fill")
+                    Label("+\(program.points) points each", systemImage: "star.fill")
+                }
+                VStack(alignment: .leading, spacing: 4) {
+                    Label("\(checkedIn) of \(roster.count) checked in", systemImage: "person.2.fill")
+                    Label("+\(program.points) points each", systemImage: "star.fill")
+                }
             }
             .font(.footnote.weight(.semibold))
             .padding(.top, 2)

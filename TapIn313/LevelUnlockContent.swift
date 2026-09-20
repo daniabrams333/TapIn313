@@ -21,6 +21,7 @@ struct LevelUnlockContent: View {
                 VStack(spacing: 6) {
                     Text("\(level.title) complete!")
                         .font(.largeTitle.bold())
+                        .accessibilityAddTraits(.isHeader)
                     Text("\(programName) · \(track.name)")
                         .font(.title3)
                 }

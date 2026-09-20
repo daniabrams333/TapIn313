@@ -211,6 +211,7 @@ private struct InfoCard<Content: View>: View {
 }
 
 private struct LevelCard: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     let level: TrackLevel
     let program: Program
     let state: LevelState
@@ -229,11 +230,15 @@ private struct LevelCard: View {
             Text("\(program.site) · \(program.schedule)")
                 .font(.subheadline)
 
-            HStack(spacing: 12) {
+            // Stacked at accessibility text sizes, so the words never squeeze the bar.
+            let sessionsLayout = dynamicTypeSize.isAccessibilitySize
+                ? AnyLayout(VStackLayout(alignment: .leading, spacing: 6))
+                : AnyLayout(HStackLayout(spacing: 12))
+            sessionsLayout {
                 SessionBar(done: done, required: level.sessionsRequired)
                 Text("\(done) of \(level.sessionsRequired) sessions")
                     .font(.subheadline.weight(.semibold))
-                    .fixedSize()
+                    .fixedSize(horizontal: !dynamicTypeSize.isAccessibilitySize, vertical: true)
             }
 
             PointsPill(

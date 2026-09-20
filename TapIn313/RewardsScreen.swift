@@ -74,7 +74,7 @@ struct RewardsScreen: View {
             Section {
                 RewardsHint(
                     symbol: "lock.fill",
-                    title: "Your first reward is \(cheapest - balance) points away",
+                    title: "Your \(store.redemptions(for: studentID).isEmpty ? "first" : "next") reward is \(cheapest - balance) points away",
                     message: "Get checked in by staff at a program to earn points.",
                     buttonTitle: "Find a program"
                 ) {

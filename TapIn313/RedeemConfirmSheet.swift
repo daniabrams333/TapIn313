@@ -10,6 +10,16 @@ struct RedeemConfirmSheet: View {
     let onConfirm: () -> Void
 
     var body: some View {
+        // Scrolls, and can grow to full height, so the buttons stay reachable at large text sizes.
+        ScrollView {
+            content
+        }
+        .scrollBounceBehavior(.basedOnSize)
+        .background(Color(.systemGroupedBackground))
+        .presentationDetents([.medium, .large])
+    }
+
+    private var content: some View {
         VStack(alignment: .leading, spacing: 20) {
             VStack(alignment: .leading, spacing: 6) {
                 Text("Spend \(reward.cost) points?")
@@ -35,8 +45,6 @@ struct RedeemConfirmSheet: View {
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("You have \(balance) points. This costs \(reward.cost). You will have \(balance - reward.cost) points.")
 
-            Spacer(minLength: 0)
-
             VStack(spacing: 8) {
                 Button(action: onConfirm) {
                     Text("Confirm and get my code")
@@ -53,8 +61,6 @@ struct RedeemConfirmSheet: View {
             }
         }
         .padding(20)
-        .background(Color(.systemGroupedBackground))
-        .presentationDetents([.medium])
     }
 
     private func row(_ title: String, _ value: String, bold: Bool = false) -> some View {

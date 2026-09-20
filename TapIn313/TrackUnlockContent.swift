@@ -20,6 +20,7 @@ struct TrackUnlockContent: View {
                 VStack(spacing: 6) {
                     Text("\(track.name) complete!")
                         .font(.largeTitle.bold())
+                        .accessibilityAddTraits(.isHeader)
                     Text("You finished all \(track.levels.count) levels.")
                         .font(.title3)
                 }

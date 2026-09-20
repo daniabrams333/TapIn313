@@ -205,7 +205,7 @@ enum MockData {
     // MARK: Which track each student picked
 
     static let studentTracks: [String: String] = [
-        "jordan": "tech",
+       "jordan": "tech",
         "maya": "creator",
         "sofia": "creator",
         "aaliyah": "maker",
