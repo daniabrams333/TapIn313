@@ -64,49 +64,9 @@ struct StudentTabs: View {
             get: { store.pendingUnlocks.first },
             set: { _ in store.dismissUnlock() }
         )) { unlock in
-            UnlockPlaceholder(unlock: unlock)
-        }
-    }
-}
-
-// MARK: - Celebration placeholder (replaced by the real unlock moment)
-
-struct UnlockPlaceholder: View {
-    @Environment(AppStore.self) private var store
-    let unlock: Unlock
-
-    var body: some View {
-        VStack(spacing: 12) {
-            Text(headline).font(.title).multilineTextAlignment(.center)
-            Text(detail).font(.body).multilineTextAlignment(.center)
-            Button("Keep going") { store.dismissUnlock() }
-                .buttonStyle(.borderedProminent)
-        }
-        .padding()
-        .presentationDetents([.medium])
-    }
-
-    private var headline: String {
-        switch unlock {
-        case .level(let trackID, let levelIndex):
-            let title = store.track(trackID)?.levels[safe: levelIndex]?.title ?? "Level"
-            return "\(title) level complete!"
-        case .track(let trackID):
-            return "\(store.track(trackID)?.name ?? "Track") complete!"
-        case .badge(let badge):
-            return "New badge: \(badge.name)"
-        }
-    }
-
-    private var detail: String {
-        switch unlock {
-        case .level(let trackID, let levelIndex):
-            let bonus = store.track(trackID)?.levels[safe: levelIndex]?.bonusPoints ?? 0
-            return "You earned \(bonus) bonus points."
-        case .track(let trackID):
-            return store.track(trackID)?.payoff ?? ""
-        case .badge(let badge):
-            return badge.detail
+            // .id makes each celebration start fresh, so its animation plays again for the next one.
+            UnlockMomentView(unlock: unlock)
+                .id(unlock.id)
         }
     }
 }
