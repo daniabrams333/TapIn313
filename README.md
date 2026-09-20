@@ -11,7 +11,7 @@ A rewards app that gets Detroit students into after-school programs, and shows t
 ![No backend](https://img.shields.io/badge/No_backend-414B5C?style=for-the-badge)
 ![Sample data](https://img.shields.io/badge/Sample_data_for_this_demo-414B5C?style=for-the-badge)
 
-**[Try the interactive demo](https://daniabrams333.github.io/TapIn313/)** &nbsp;·&nbsp; [What it does](#what-it-does) &nbsp;·&nbsp; [The 3-minute story](#the-3-minute-story) &nbsp;·&nbsp; [Run it](#run-it)
+**[Try the interactive demo](https://daniedeveloper.com)** &nbsp;·&nbsp; [What it does](#what-it-does) &nbsp;·&nbsp; [The 3-minute story](#the-3-minute-story) &nbsp;·&nbsp; [Run it](#run-it)
 
 </div>
 
@@ -76,7 +76,7 @@ Level bonuses are paid once and never twice.
 4. Back in student mode: **level complete (+25)**, then the **Century Club** badge at 105 points, and *Up next* moves to Coding and Tech Club at Conely Library.
 5. Jordan **redeems a reward** and sees the gift card code.
 
-The [interactive web demo](https://daniabrams333.github.io/TapIn313/) walks through exactly this story in a phone-sized simulation, with a "Show me" button for each step.
+The [interactive web demo](https://daniedeveloper.com) walks through exactly this story in a phone-sized simulation, with a "Show me" button for each step.
 
 <!--
 Add screenshots here once you have them, for example:
