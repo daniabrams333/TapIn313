@@ -74,6 +74,9 @@ a:hover { color: var(--city); }
 .lead { font-size: 1.1875rem; color: var(--ink-2); max-width: 46rem; }
 .note { font-size: .9375rem; color: var(--ink-2); }
 
+/* Links on the blue demo section: white so they stay readable (11:1 on Rise Blue) */
+.on-dark-link, .on-dark-link:hover { color: #fff; font-weight: 700; }
+
 /* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;

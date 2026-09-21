@@ -11,7 +11,7 @@ A rewards app that gets Detroit students into after-school programs, and shows t
 ![No backend](https://img.shields.io/badge/No_backend-414B5C?style=for-the-badge)
 ![Sample data](https://img.shields.io/badge/Sample_data_for_this_demo-414B5C?style=for-the-badge)
 
-**[Try the interactive demo](https://daniedeveloper.com)** &nbsp;·&nbsp; [What it does](#what-it-does) &nbsp;·&nbsp; [The 3-minute story](#the-3-minute-story) &nbsp;·&nbsp; [Run it](#run-it)
+**[Try the interactive demo](https://daniedeveloper.com)** &nbsp;·&nbsp; **[Get the app on TestFlight](https://testflight.apple.com/join/GXgw3qqR)** &nbsp;·&nbsp; [What it does](#what-it-does) &nbsp;·&nbsp; [The 3-minute story](#the-3-minute-story) &nbsp;·&nbsp; [Run it](#run-it)
 
 </div>
 
@@ -126,6 +126,10 @@ TapIn313/
 ```
 
 ## Run it
+
+**On your device:** install the app with [TestFlight](https://testflight.apple.com/join/GXgw3qqR). You need an iPhone or iPad and Apple's free TestFlight app.
+
+**From source:**
 
 1. Open `TapIn313.xcodeproj` in Xcode.
 2. Choose an iPhone or iPad simulator.
